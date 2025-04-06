@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import BoardList from './components/board/BoardList';
+import BoardWrite from './components/board/BoardWrite';
+import BoardDetail from './components/board/BoardDetail';
+import BoardEdit from './components/board/BoardEdit';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Navigation() {
+  const navigate = useNavigate();
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div>
+      <p>
+        <button onClick={() => navigate('/board')}>게시판 이동</button>
       </p>
-    </>
-  )
+      <p>
+        <button onClick={() => navigate('/board/write')}>게시판 글쓰기</button>
+      </p>
+      <p> 
+        <button onClick={() => navigate('/board/1')}>게시판 조회</button>
+      </p>
+      <p>
+        <button onClick={() => navigate('/board/edit/1')}>게시판 수정</button>
+      </p>
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      <Navigation />
+      <div className="app-container">
+        <Routes>
+          <Route path="/board" element={<BoardList />} />
+          <Route path="/board/write" element={<BoardWrite />} />
+          <Route path="/board/:id" element={<BoardDetail />} />
+          <Route path="/board/edit/:id" element={<BoardEdit />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
