@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { boardService } from '../../services/boardService';
+import { boardService } from '../../services/BoardService';
 
 const BoardWrite: React.FC = () => {
   const navigate = useNavigate();

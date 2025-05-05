@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { boardService, Post } from '../../services/boardService';
+import { boardService, Post } from '../../services/BoardService';
 
 const BoardList: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);

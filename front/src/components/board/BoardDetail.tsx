@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { boardService, Post } from '../../services/boardService';
+import { boardService, Post } from '../../services/BoardService';
 
 const BoardDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
