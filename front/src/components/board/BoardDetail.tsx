@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { boardService, Post } from '../../services/BoardService';
+import { CommentSection } from '../CommentSection';
 
 const BoardDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -99,6 +100,8 @@ const BoardDetail: React.FC = () => {
           </button>
         </div>
       </div>
+
+      <CommentSection postId={Number(id)} />
     </div>
   );
 };
